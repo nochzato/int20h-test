@@ -8,3 +8,4 @@ const FilterPage = () => {
         <Filter userProducts={DUMMY_USER_PRODUCTS}/>
     </div>
 }
+
