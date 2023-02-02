@@ -1,0 +1,13 @@
+.main_header {
+    width: 100vw;
+    height: 15vh;
+    font-size: 2rem;
+    background: linear-gradient(to right, #f3a561, #f7d262);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main_header h1 {
+    margin: 0;
+}
