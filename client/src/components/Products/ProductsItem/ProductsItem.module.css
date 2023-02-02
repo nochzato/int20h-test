@@ -1,0 +1,16 @@
+.product_item_container {
+    padding: 1rem;
+    background: white;
+    border: 1px solid gray;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1.5rem;
+    width: 200px;
+    transform: scale(1);
+    transition: transform 0.2s ease-out;
+    cursor: pointer;
+}
+
+.product_item_container:hover {
+    transform: scale(1.05);
+}

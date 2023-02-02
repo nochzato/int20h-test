@@ -1,0 +1,49 @@
+.products_search_container {
+    background: white;
+    width: 70vw;
+}
+
+.products_search_form {
+    display: flex;
+    padding: 1.38rem;
+    justify-content: space-between;
+    border-bottom: 1px solid gray;
+}
+
+.products_search_form input{
+    width: 50vw;
+    height: 50px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    border: 2px solid rgba(0,0,0,0.5);
+}
+
+.products_search_form input:hover {
+    box-shadow: inset 0 0 5px 0 rgba(0,0,0,0.4);
+}
+
+.products_search_form button{
+    width: 200px;
+    border-radius: 8px;
+    background: white;
+    font-size: 1.2rem;
+    border: 2px solid rgba(0,0,0,0.5);
+    cursor: pointer;
+}
+
+
+.products_search_form button:hover {
+    box-shadow: inset 0 0 5px 0 rgba(0,0,0,0.4);
+} 
+
+.products_search_categories {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.3rem;
+    font-size: 1.2rem;
+}
+
+.products_search_categories div label {
+    margin-right: 0.5rem;
+}
