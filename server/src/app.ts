@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import axios from 'axios';
 import _ from 'lodash';
+import { StringifyOptions } from 'querystring';
 
 const app: Application = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -13,7 +14,12 @@ interface ingredient {
   idIngredient: string;
   strIngredient: string;
   strDescription: string;
-  strType: null;
+  strType: string;
+}
+
+interface ingredientWithMeasure {
+  ingredient: string;
+  measure: string;
 }
 
 const ingredients: Array<string> = [];
@@ -44,7 +50,30 @@ app.get('/recipes/:id', (req: Request, res: Response): void => {
       `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${req.params.id}`
     )
     .then((response) => {
-      res.send(response.data.meals[0]);
+      const meal = response.data.meals[0];
+      const ingredientsWithMeasures: Array<ingredientWithMeasure> = [];
+      for (let i = 1; i <= 20; i++) {
+        if (meal[`strIngredient${i}`]) {
+          ingredientsWithMeasures.push({
+            ingredient: meal[`strIngredient${i}`],
+            measure: meal[`strMeasure${i}`],
+          });
+        } else {
+          break;
+        }
+      }
+
+      res.send({
+        idMeal: meal.idMeal,
+        strMeal: meal.strMeal,
+        strCategory: meal.strCategory,
+        strArea: meal.strArea,
+        strInstructions: meal.strInstructions,
+        strMealThumb: meal.strMealThumb,
+        strTags: meal.strTags,
+        strYoutube: meal.strYoutube,
+        ingredientsWithMeasures,
+      });
     });
 });
 
