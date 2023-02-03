@@ -1,6 +1,8 @@
 import React from "react";
 import RecepiesList from "../../components/Recepies/RecepiesList/RecepiesList";
 
+import classes from './RecepiesPage.module.css';
+
 const DUMMY_RECEPIES = [
     {
         id: 1,
@@ -45,7 +47,10 @@ const DUMMY_RECEPIES = [
 ];
 
 const RecepiesPage = () => {
-    return <RecepiesList recepies={DUMMY_RECEPIES}/>
+    return <div className={classes.recepies_page_container}>
+        <h2>List of recepies</h2>
+        <RecepiesList recepies={DUMMY_RECEPIES}/>
+    </div>
 }
 
 export default RecepiesPage;

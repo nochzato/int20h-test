@@ -1,14 +1,28 @@
-import React from 'react';
-import classes from './ProductsItem.module.css';
+import React from "react";
+import { useDispatch } from "react-redux";
+import { productsActions } from "../../../store/products-slice";
+import classes from "./ProductsItem.module.css";
 
 export interface ProductsItemProps {
-    title: string;
+  title: string;
 }
 
 const ProductsItem: React.FC<ProductsItemProps> = (props) => {
-    return <div className={classes.product_item_container}>
-        <span>{props.title}</span>
-    </div>;
-}
+  const dispatch = useDispatch();
+
+  const addProductHandler = (e: any) => {
+    dispatch(productsActions.addProduct(e.currentTarget.dataset.prodtitle));
+  };
+
+  return (
+    <div
+      className={classes.product_item_container}
+      data-prodtitle={props.title}
+      onClick={addProductHandler}
+    >
+      <span>{props.title}</span>
+    </div>
+  );
+};
 
 export default ProductsItem;

@@ -1,0 +1,9 @@
+.recepies_page_container {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.recepies_page_container h2{
+    background: white;
+    margin: 0;
+}
