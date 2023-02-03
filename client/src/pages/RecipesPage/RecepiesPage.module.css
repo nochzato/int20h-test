@@ -4,6 +4,27 @@
 }
 
 .recepies_page_container h2{
-    background: white;
     margin: 0;
+}
+
+.recepies_page_header {
+    display: flex;
+    align-items: center;
+    background: white;
+}
+
+.recepies_page_header h2{
+    margin-left: 8rem;
+    font-weight: normal;
+    font-size: 2.3rem;
+}
+
+.recepies_page_header a{
+    text-decoration: none;
+    color: black;
+    margin-left: 1rem;
+}
+
+.recepies_page_header a:hover {
+    color: rgb(255, 123, 0);
 }
