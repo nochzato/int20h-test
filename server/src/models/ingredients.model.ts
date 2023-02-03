@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import { ingredients } from '../common/types';
 
-const ingredientSchema = new mongoose.Schema<ingredients>({
+export const ingredientSchema = new mongoose.Schema<ingredients>({
   ingredients: [String],
 });
 
