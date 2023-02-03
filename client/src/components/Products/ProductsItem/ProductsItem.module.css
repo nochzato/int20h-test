@@ -2,7 +2,7 @@
     padding: 1rem;
     background: white;
     border: 1px solid gray;
-    border-radius: 8px;
+    border-radius: 12px;
     text-align: center;
     font-size: 1.5rem;
     width: 200px;
@@ -13,4 +13,9 @@
 
 .product_item_container:hover {
     transform: scale(1.05);
+}
+
+.added {
+    background: rgb(196, 196, 196);
+    cursor: not-allowed;
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import classes from "./RecepiesItem.module.css";
 
 export interface RecepiesItemProps {
@@ -10,7 +11,9 @@ export interface RecepiesItemProps {
 const RecepiesItem: React.FC<RecepiesItemProps> = (props) => {
   return (
     <div className={classes.item_container}>
-      <img src={props.imgUrl} alt="receipe" />
+      <Link to='/recepies/details'>
+        <img src={props.imgUrl} alt="receipe" />
+      </Link>
       <span>{props.title}</span>
     </div>
   );

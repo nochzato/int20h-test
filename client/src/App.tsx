@@ -1,21 +1,52 @@
-import React from 'react';
-import './App.css';
-import MainHeader from './components/Navigation/MainHeader/MainHeader';
-import RecepiesPage from './pages/RecipesPage/RecepiesPage';
-import FilterPage from './components/Filter/Filter';
-import ProductsPage from './pages/ProductsPage/ProductsPage';
+import React from "react";
+import "./App.css";
+import MainHeader from "./components/Navigation/MainHeader/MainHeader";
+import RecepiesPage from "./pages/RecipesPage/RecepiesPage";
+import FilterPage from "./components/Filter/Filter";
+import ProductsPage from "./pages/ProductsPage/ProductsPage";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Route, Routes } from "react-router-dom";
+import RecepiesDetails from "./pages/RecepiesDetails/RecepiesDetails";
 
-const DUMMY_USER_PRODUCTS = ['product1', 'product2', 'product3', 'product4', 'product5', 'product6'];
+const DUMMY_USER_PRODUCTS = [
+  "product1",
+  "product2",
+  "product3",
+  "product4",
+  "product5",
+  "product6",
+];
 
 function App() {
   return (
-    <div className="App">
-      <MainHeader/>
-      <div className="App_container">
-        <ProductsPage/>
-        <FilterPage/>
+    <>
+      <div className="App">
+        <MainHeader />
+        <div className="App_container">
+          <Routes>
+            <Route path="/" element={<ProductsPage />} />
+            <Route path="/recepies" element={<RecepiesPage />} />
+            <Route path="/recepies/details" element={<RecepiesDetails />} />
+            <Route path="/*" element={<ProductsPage />} />
+          </Routes>
+          <FilterPage />
+        </div>
       </div>
-    </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      <ToastContainer />ƒ
+    </>
   );
 }
 
