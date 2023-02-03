@@ -10,7 +10,7 @@ interface ProductsListProps {
 const ProductsList: React.FC<ProductsListProps> = (props) => {
     return <div className={classes.products_list}>
         {props.products.map(product => {
-            return <ProductsItem title={product}/>
+            return <ProductsItem key={Math.random()} title={product}/>
         })}
     </div>;
 }

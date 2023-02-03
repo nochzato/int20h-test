@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Itim&family=Source+Sans+Pro&display=swap');
 
 * {
   box-sizing: border-box;
 }
 
 html {
-  font-family: Itim, monospace;
+  font-family: 'Source Sans Pro', monospace;
 }
 
 body {
@@ -16,4 +16,5 @@ body {
     #fce6a4,
     #f7b882
   );
+  /* overflow: hidden; */
 }
