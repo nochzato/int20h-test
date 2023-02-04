@@ -27,7 +27,7 @@ function App() {
           <Routes>
             <Route path="/" element={<ProductsPage />} />
             <Route path="/recepies" element={<RecepiesPage />} />
-            <Route path="/recepies/details" element={<RecepiesDetails />} />
+            <Route path="/recepies/:idMeal" element={<RecepiesDetails />} />
             <Route path="/*" element={<ProductsPage />} />
           </Routes>
           <FilterPage />

@@ -6,7 +6,7 @@
 .products_search_form {
     display: flex;
     padding: 1.38rem;
-    justify-content: space-between;
+    justify-content: center;
     border-bottom: 1px solid gray;
 }
 

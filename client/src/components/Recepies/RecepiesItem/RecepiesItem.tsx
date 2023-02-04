@@ -3,18 +3,18 @@ import { Link } from "react-router-dom";
 import classes from "./RecepiesItem.module.css";
 
 export interface RecepiesItemProps {
-  id: number;
-  imgUrl: string;
-  title: string;
+  idMeal: string;
+  strMeal: string;
+  strMealThumb: string;
 }
 
 const RecepiesItem: React.FC<RecepiesItemProps> = (props) => {
   return (
     <div className={classes.item_container}>
-      <Link to='/recepies/details'>
-        <img src={props.imgUrl} alt="receipe" />
+      <Link to={'/recepies/' + props.idMeal}>
+        <img src={props.strMealThumb} alt="receipe" />
       </Link>
-      <span>{props.title}</span>
+      <span>{props.strMeal}</span>
     </div>
   );
 };
