@@ -1,68 +1,53 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import RecepiesList from "../../components/Recepies/RecepiesList/RecepiesList";
+import { RecepiesItemProps } from "../../components/Recepies/RecepiesItem/RecepiesItem";
+import RecepiesList, {
+  RecepiesListProps,
+} from "../../components/Recepies/RecepiesList/RecepiesList";
+import { RootState } from "../../store";
 
 import classes from "./RecepiesPage.module.css";
 
-const DUMMY_RECEPIES = [
-  {
-    id: 1,
-    title: "Receipe_1",
-    imgUrl:
-      "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=556,505",
-  },
-  {
-    id: 2,
-    title: "Receipe_2",
-    imgUrl:
-      "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=556,505",
-  },
-  {
-    id: 3,
-    title: "Receipe_3",
-    imgUrl:
-      "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=556,505",
-  },
-  {
-    id: 4,
-    title: "Receipe_4",
-    imgUrl:
-      "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=556,505",
-  },
-  {
-    id: 5,
-    title: "Receipe_5",
-    imgUrl:
-      "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=556,505",
-  },
-  {
-    id: 6,
-    title: "Receipe_6",
-    imgUrl:
-      "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=556,505",
-  },
-  {
-    id: 7,
-    title: "Receipe_7",
-    imgUrl:
-      "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=556,505",
-  },
-  {
-    id: 8,
-    title: "Receipe_8",
-    imgUrl:
-      "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=556,505",
-  },
-];
-
 const RecepiesPage = () => {
+  const mainIngredient = useSelector<RootState, string>(
+    (state) => state.products.mainProduct
+  );
+  
+  const [recepies, setRecepies] = useState<any>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    const url = "http://localhost:8080/recipes";
+
+    setIsLoading(true);
+
+    fetch(url, {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ main_ingredient: mainIngredient }),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((recepies) => {
+        setRecepies(recepies);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [mainIngredient]);
+
   return (
     <div className={classes.recepies_page_container}>
       <div className={classes.recepies_page_header}>
         <Link to="/">Back to products</Link>
         <h2>List of recepies</h2>
       </div>
-      <RecepiesList recepies={DUMMY_RECEPIES} />
+      {!isLoading && <RecepiesList recepies={recepies} />}
     </div>
   );
 };

@@ -12,7 +12,7 @@ export const getRecipesByMainIngredient = (
     )
     .then((response) => {
       res.send(response.data.meals);
-    });
+    })
 };
 
 export const getRecipeById = (req: Request, res: Response): void => {
