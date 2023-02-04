@@ -1,8 +1,14 @@
-export interface ingredients {
+export interface Ingredients {
   ingredients: Array<string>;
 }
 
-export interface ingredientWithMeasure {
+export interface IngredientWithMeasure {
   ingredient: string;
   measure: string;
+}
+
+export interface IUser {
+  email: string;
+  name: string;
+  password: string;
 }
