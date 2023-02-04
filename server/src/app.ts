@@ -9,6 +9,7 @@ import registerRouter from './routes/register.router';
 import authRouter from './routes/auth.router';
 
 const app: Application = express();
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
