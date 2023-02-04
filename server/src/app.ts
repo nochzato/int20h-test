@@ -7,6 +7,8 @@ import ingredientsRouter from './routes/ingredients.router';
 import recipesRouter from './routes/recipes.router';
 import registerRouter from './routes/register.router';
 import authRouter from './routes/auth.router';
+import listRouter from './routes/list.router';
+import authenticateToken from './middleware/authenticateToken';
 
 const app: Application = express();
 
@@ -17,6 +19,11 @@ app.use(ingredientsRouter);
 app.use(recipesRouter);
 app.use(registerRouter);
 app.use(authRouter);
+app.use(listRouter);
+
+app.get('/test', authenticateToken, (req, res) => {
+  res.send(req.body);
+});
 
 connectToDb();
 
