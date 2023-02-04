@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import axios from 'axios';
-import { ingredientWithMeasure } from '../common/types';
+import { IngredientWithMeasure } from '../common/types';
 
 export const getRecipesByMainIngredient = (
   req: Request,
@@ -22,7 +22,7 @@ export const getRecipeById = (req: Request, res: Response): void => {
     )
     .then((response) => {
       const meal = response.data.meals[0];
-      const ingredientsWithMeasures: Array<ingredientWithMeasure> = [];
+      const ingredientsWithMeasures: Array<IngredientWithMeasure> = [];
       for (let i = 1; i <= 20; i++) {
         if (meal[`strIngredient${i}`]) {
           ingredientsWithMeasures.push({
