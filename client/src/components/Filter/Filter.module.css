@@ -78,6 +78,10 @@
     margin-bottom: 0.5rem;
 }
 
+.error {
+    color: rgb(240, 35, 35);
+}
+
 
 .filter_list_item span:hover {
     color: rgb(255, 123, 0);

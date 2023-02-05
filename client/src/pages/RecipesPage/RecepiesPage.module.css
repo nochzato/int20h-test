@@ -11,6 +11,7 @@
     display: flex;
     align-items: center;
     background: white;
+    width: 70vw;
 }
 
 .recepies_page_header h2{
