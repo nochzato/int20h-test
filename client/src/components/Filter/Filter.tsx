@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { RootState } from "../../store";
 import { productsActions, productsSlice } from "../../store/products-slice";
+import { showErrorNotification } from "../../util/notifications";
 import classes from "./Filter.module.css";
 
 const Filter: React.FC = () => {
   const { userProducts, mainProduct } = useSelector<RootState, productsSlice>(
     (state) => state.products
   );
+
+  const [error, setError] = useState<boolean>(false);
 
   const dispatch = useDispatch();
 
@@ -19,6 +22,7 @@ const Filter: React.FC = () => {
   };
 
   const addMainProductHandler = (product: string) => {
+    setError(false);
     dispatch(productsActions.addMainProduct(product));
   };
 
@@ -27,6 +31,12 @@ const Filter: React.FC = () => {
   };
 
   const searchRecepiesHandler = () => {
+    if(!mainProduct){
+      showErrorNotification('Please select main product!');
+      setError(true);
+      return;
+    }
+
     navigate("/recepies");
     return;
   };
@@ -34,7 +44,7 @@ const Filter: React.FC = () => {
   return (
     <div className={classes.filter_container}>
       <div className={classes.filter_main_product}>
-        <span>Main Product</span>
+        <span className={`${!error ? '' : classes.error}`}>Main Product</span>
         {mainProduct && (
           <div className={classes.main_product_container}>
             <button onClick={deleteMainProductHandler}>×</button>

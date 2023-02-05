@@ -6,6 +6,7 @@ import RecepiesList, {
   RecepiesListProps,
 } from "../../components/Recepies/RecepiesList/RecepiesList";
 import { RootState } from "../../store";
+import { ColorRing } from "react-loader-spinner";
 
 import classes from "./RecepiesPage.module.css";
 
@@ -13,7 +14,7 @@ const RecepiesPage = () => {
   const mainIngredient = useSelector<RootState, string>(
     (state) => state.products.mainProduct
   );
-  
+
   const [recepies, setRecepies] = useState<any>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -33,6 +34,7 @@ const RecepiesPage = () => {
         return res.json();
       })
       .then((recepies) => {
+        console.log(recepies);
         setRecepies(recepies);
         setIsLoading(false);
       })
@@ -47,6 +49,15 @@ const RecepiesPage = () => {
         <Link to="/">Back to products</Link>
         <h2>List of recepies</h2>
       </div>
+      <ColorRing
+        visible={isLoading}
+        height="80"
+        width="80"
+        ariaLabel="blocks-loading"
+        wrapperStyle={{}}
+        wrapperClass="blocks-wrapper"
+        colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
+      />
       {!isLoading && <RecepiesList recepies={recepies} />}
     </div>
   );

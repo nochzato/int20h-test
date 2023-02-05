@@ -8,6 +8,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Route, Routes } from "react-router-dom";
 import RecepiesDetails from "./pages/RecepiesDetails/RecepiesDetails";
+import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import ListsModal from "./components/ListsModal/ListsModal";
 
 const DUMMY_USER_PRODUCTS = [
   "product1",
@@ -28,6 +31,8 @@ function App() {
             <Route path="/" element={<ProductsPage />} />
             <Route path="/recepies" element={<RecepiesPage />} />
             <Route path="/recepies/:idMeal" element={<RecepiesDetails />} />
+            <Route path="/registration" element={<RegistrationPage />} />
+            <Route path="/login" element={<LoginPage />} />
             <Route path="/*" element={<ProductsPage />} />
           </Routes>
           <FilterPage />
@@ -45,7 +50,7 @@ function App() {
         pauseOnHover
         theme="light"
       />
-      <ToastContainer />ƒ
+      <ToastContainer />
     </>
   );
 }

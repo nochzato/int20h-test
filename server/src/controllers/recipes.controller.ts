@@ -11,7 +11,10 @@ export const getRecipesByMainIngredient = (
       `https://www.themealdb.com/api/json/v1/1/filter.php?i=${req.body.main_ingredient}`
     )
     .then((response) => {
-      res.send(response.data.meals);
+      res.status(200).json(response.data.meals);
+    })
+    .catch(err => {
+      console.log(err);
     })
 };
 
