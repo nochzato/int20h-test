@@ -6,7 +6,7 @@ import {
 
 const router = express.Router();
 
-router.get('/recipes', getRecipesByMainIngredient);
+router.post('/recipes', getRecipesByMainIngredient);
 
 router.get('/recipes/:id', getRecipeById);
 

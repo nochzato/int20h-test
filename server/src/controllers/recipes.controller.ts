@@ -1,6 +1,6 @@
-import axios from 'axios';
 import { Request, Response } from 'express';
-import { ingredientWithMeasure } from '../common/types';
+import axios from 'axios';
+import { IngredientWithMeasure } from '../common/types';
 
 export const getRecipesByMainIngredient = (
   req: Request,
@@ -11,11 +11,8 @@ export const getRecipesByMainIngredient = (
       `https://www.themealdb.com/api/json/v1/1/filter.php?i=${req.body.main_ingredient}`
     )
     .then((response) => {
-      res.status(200).json(response.data.meals);
-    })
-    .catch(err => {
-      console.log(err);
-    })
+      res.send(response.data.meals);
+    });
 };
 
 export const getRecipeById = (req: Request, res: Response): void => {
@@ -25,7 +22,7 @@ export const getRecipeById = (req: Request, res: Response): void => {
     )
     .then((response) => {
       const meal = response.data.meals[0];
-      const ingredientsWithMeasures: Array<ingredientWithMeasure> = [];
+      const ingredientsWithMeasures: Array<IngredientWithMeasure> = [];
       for (let i = 1; i <= 20; i++) {
         if (meal[`strIngredient${i}`]) {
           ingredientsWithMeasures.push({
