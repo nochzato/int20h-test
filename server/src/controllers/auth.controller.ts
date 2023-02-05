@@ -11,7 +11,9 @@ export const AuthenticateUser = (req: Request, res: Response) => {
     if (foundUser) {
       bcrypt.compare(user.password, foundUser.password, (err, same) => {
         if (same) {
-          res.send(generateAcessToken(user.email));
+          const token = generateAcessToken(user.email);
+          res.cookie('auth-token', token, { httpOnly: true });
+          res.status(200).end();
         } else {
           res.sendStatus(401).send("Password doesn't match");
         }

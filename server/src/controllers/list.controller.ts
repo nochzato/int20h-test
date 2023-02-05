@@ -2,7 +2,6 @@ import { Request, Response } from 'express';
 import { MongooseError } from 'mongoose';
 import { IList } from '../common/types';
 import { List } from '../models/list.model';
-import { getRecipesByMainIngredient } from './recipes.controller';
 
 export const createNewList = (req: Request, res: Response) => {
   const newList = new List({
