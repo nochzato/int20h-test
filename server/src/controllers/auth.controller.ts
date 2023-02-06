@@ -9,10 +9,10 @@ export const AuthenticateUser = (req: Request, res: Response) => {
   const user: IUser = req.body;
   User.findOne({ email: user.email }, (_: MongooseError, foundUser: IUser) => {
     if (foundUser) {
-      bcrypt.compare(user.password, foundUser.password, (err, same) => {
+      bcrypt.compare(user.password, foundUser.password, (_, same) => {
         if (same) {
           const token = generateAcessToken(user.email);
-          res.cookie('auth-token', token, { httpOnly: true});
+          res.cookie('auth-token', token, { httpOnly: true });
           return res.status(200).end();
         } else {
           return res.sendStatus(401).send("Password doesn't match");
