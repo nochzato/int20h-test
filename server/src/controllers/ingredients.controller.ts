@@ -4,9 +4,9 @@ import { MongooseError } from 'mongoose';
 import { Ingredients } from '../common/types';
 import { Ingredient } from '../models/ingredients.model';
 
-export const getIngredients = (req: Request, res: Response): void => {
+export const getIngredients = (_: Request, res: Response): void => {
   Ingredient.find({}, (_: MongooseError, ingredients: Array<Ingredients>) => {
-    res.send({ ingredients: ingredients[0].ingredients });
+    res.send({ ingredients: ingredients[0].ingredients.slice(0, 20) });
   });
 };
 
@@ -18,6 +18,6 @@ export const getIngredientsByQuery = (req: Request, res: Response): void => {
         return ingredient.includes(query);
       }
     );
-    res.send({ ingredients: foundIngredients });
+    res.send({ ingredients: foundIngredients.slice(0, 20) });
   });
 };
