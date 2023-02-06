@@ -11,6 +11,8 @@ const Filter: React.FC = () => {
     (state) => state.products
   );
 
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(true);
+
   const [error, setError] = useState<boolean>(false);
 
   const dispatch = useDispatch();
@@ -31,8 +33,8 @@ const Filter: React.FC = () => {
   };
 
   const searchRecepiesHandler = () => {
-    if(!mainProduct){
-      showErrorNotification('Please select main product!');
+    if (!mainProduct) {
+      showErrorNotification("Please select main product!");
       setError(true);
       return;
     }
@@ -42,38 +44,54 @@ const Filter: React.FC = () => {
   };
 
   return (
-    <div className={classes.filter_container}>
-      <div className={classes.filter_main_product}>
-        <span className={`${!error ? '' : classes.error}`}>Main Product</span>
-        {mainProduct && (
-          <div className={classes.main_product_container}>
-            <button onClick={deleteMainProductHandler}>×</button>
-            <span>{mainProduct}</span>
-          </div>
-        )}
-      </div>
-      <ul className={classes.filter_list}>
-        {userProducts.map((product) => {
-          return (
-            <li key={Math.random()} className={classes.filter_list_item}>
-              <button onClick={deleteProductHandler.bind(this, product.title)}>
-                ×
-              </button>
-              <span>{product.title}</span>
-              <button onClick={addMainProductHandler.bind(this, product.title)}>
-                Main product
-              </button>
-            </li>
-          );
-        })}
-      </ul>
+    <>
       <button
-        className={classes.filter_search_btn}
-        onClick={searchRecepiesHandler}
+        className={classes.toggle_filter_btn}
+        onClick={() => setIsMenuOpen((prevState) => !prevState)}
       >
-        Search recepies
+        Toggle Filter Menu
       </button>
-    </div>
+      {isMenuOpen && (
+        <div className={classes.filter_container}>
+          <div className={classes.filter_main_product}>
+            <span className={`${!error ? "" : classes.error}`}>
+              Main Product
+            </span>
+            {mainProduct && (
+              <div className={classes.main_product_container}>
+                <button onClick={deleteMainProductHandler}>×</button>
+                <span>{mainProduct}</span>
+              </div>
+            )}
+          </div>
+          <ul className={classes.filter_list}>
+            {userProducts.map((product) => {
+              return (
+                <li key={Math.random()} className={classes.filter_list_item}>
+                  <button
+                    onClick={deleteProductHandler.bind(this, product.title)}
+                  >
+                    ×
+                  </button>
+                  <span>{product.title}</span>
+                  <button
+                    onClick={addMainProductHandler.bind(this, product.title)}
+                  >
+                    Main product
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+          <button
+            className={classes.filter_search_btn}
+            onClick={searchRecepiesHandler}
+          >
+            Search recepies
+          </button>
+        </div>
+      )}
+    </>
   );
 };
 

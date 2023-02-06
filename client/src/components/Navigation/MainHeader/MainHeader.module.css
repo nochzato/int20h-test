@@ -52,3 +52,60 @@
 .main_header h1 a:hover{
     color: rgb(100, 55, 12);
 }
+
+@media screen and (max-width: 700px) {
+    .main_header {
+        width: 100vw;
+        height: 15vh;
+        font-size: 1.2rem;
+        background: linear-gradient(to right, #f3a561, #f7d262);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 2px solid black;
+    }
+    
+    .main_header h1 {
+        margin: 0;
+        transform: scale(1);
+        transition: transform 0.4s ease-out;
+        text-align: center;
+        flex-basis: 1;
+        margin-left: 0;
+    }
+    
+    .main_header h1 a{
+        text-decoration: none;
+        color: black; 
+    }
+    
+    .sign_links {
+        display: flex;
+        flex-direction: row;
+        margin-right: 1rem;
+        align-items: center;
+        justify-self: center;
+    }
+    
+    .sign_links a{
+        text-decoration: none;
+        color: black;
+        font-size: 1.2rem;
+        margin-right: 1rem;
+        transform: scale(1);
+        transition: transform 0.4s ease-out;
+    }
+    
+    .sign_links a:hover{
+        color: rgb(100, 55, 12);
+        transform: scale(1.1);
+    }
+    
+    .main_header h1:hover{ 
+        transform: scale(1.1);
+    }
+    
+    .main_header h1 a:hover{
+        color: rgb(100, 55, 12);
+    }
+}

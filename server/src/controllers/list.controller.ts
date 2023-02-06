@@ -4,6 +4,7 @@ import { IList } from '../common/types';
 import { List } from '../models/list.model';
 
 export const createNewList = (req: Request, res: Response) => {
+  console.log()
   const newList = new List({
     title: req.body.title,
     recipes: [req.body.recipeId],

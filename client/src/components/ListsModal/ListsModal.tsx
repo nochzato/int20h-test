@@ -3,6 +3,7 @@ import classes from "./ListsModal.module.css";
 
 interface ListModalProps {
   onCloseModal: () => void;
+  onAddToList: (title: string) => void;
 }
 
 const ListsModal: React.FC<ListModalProps> = (props) => {
@@ -33,7 +34,7 @@ const ListsModal: React.FC<ListModalProps> = (props) => {
           return (
             <li key={Math.random()} className={classes.lists_item}>
               <span>{list}</span>
-              <button>+</button>
+              <button onClick={props.onAddToList.bind(this, list)}>+</button>
             </li>
           );
         })}
