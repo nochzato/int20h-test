@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { RecepiesItemProps } from "../../components/Recepies/RecepiesItem/RecepiesItem";
 import RecepiesList, {
   RecepiesListProps,
@@ -9,16 +9,33 @@ import { RootState } from "../../store";
 import { ColorRing } from "react-loader-spinner";
 
 import classes from "./RecepiesPage.module.css";
+import { userProducts } from "../../store/products-slice";
+import { showWarningNotification } from "../../util/notifications";
 
 const RecepiesPage = () => {
+  const navigate = useNavigate();
   const mainIngredient = useSelector<RootState, string>(
     (state) => state.products.mainProduct
   );
+
+  const userProducts = useSelector<RootState, userProducts[]>(
+    (state) => state.products.userProducts
+  );
+
+  const userProductsTitles = userProducts.map(product => {
+    return product.title;
+  })
 
   const [recepies, setRecepies] = useState<any>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
+    if(mainIngredient === ''){
+      showWarningNotification('Please select main ingredient!');
+      navigate('/');
+      return;
+    }
+
     const url = "http://localhost:8080/recipes";
 
     setIsLoading(true);
@@ -28,7 +45,7 @@ const RecepiesPage = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ main_ingredient: mainIngredient }),
+      body: JSON.stringify({ main_ingredient: mainIngredient, ingredients: userProductsTitles }),
     })
       .then((res) => {
         return res.json();

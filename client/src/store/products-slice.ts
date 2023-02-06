@@ -21,10 +21,10 @@ const productsSlice = createSlice({
     initialState: initialProductsState,
     reducers: {
         addProduct: (state, action) => {
-            if(state.userProducts.length === 6){
-                showErrorNotification('You have reached maximum amount of products!')
-                return;
-            }
+            // if(state.userProducts.length === 6){
+            //     showErrorNotification('You have reached maximum amount of products!')
+            //     return;
+            // }
 
             state.userProducts.push({title: action.payload, isAdded: true});
         },

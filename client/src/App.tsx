@@ -4,22 +4,12 @@ import MainHeader from "./components/Navigation/MainHeader/MainHeader";
 import RecepiesPage from "./pages/RecipesPage/RecepiesPage";
 import FilterPage from "./components/Filter/Filter";
 import ProductsPage from "./pages/ProductsPage/ProductsPage";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Route, Routes } from "react-router-dom";
 import RecepiesDetails from "./pages/RecepiesDetails/RecepiesDetails";
 import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
-import ListsModal from "./components/ListsModal/ListsModal";
-
-const DUMMY_USER_PRODUCTS = [
-  "product1",
-  "product2",
-  "product3",
-  "product4",
-  "product5",
-  "product6",
-];
 
 function App() {
   return (
