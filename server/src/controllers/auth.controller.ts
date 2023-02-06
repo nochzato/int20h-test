@@ -12,14 +12,14 @@ export const AuthenticateUser = (req: Request, res: Response) => {
       bcrypt.compare(user.password, foundUser.password, (err, same) => {
         if (same) {
           const token = generateAcessToken(user.email);
-          res.cookie('auth-token', token, { httpOnly: true });
-          res.status(200).end();
+          res.cookie('auth-token', token, { httpOnly: true});
+          return res.status(200).end();
         } else {
-          res.sendStatus(401).send("Password doesn't match");
+          return res.sendStatus(401).send("Password doesn't match");
         }
       });
     } else {
-      res.sendStatus(401).send('User with this email not found');
+      return res.sendStatus(401).send('User with this email not found');
     }
   });
 };

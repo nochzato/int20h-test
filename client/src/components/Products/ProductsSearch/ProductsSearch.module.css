@@ -47,3 +47,18 @@
 .products_search_categories div label {
     margin-right: 0.5rem;
 }
+
+@media screen and (max-width: 700px) {
+    .products_search_container {
+        background: white;
+        width: 100vw;
+    }
+
+    .products_search_form input{
+        width: 70vw;
+        height: 50px;
+        border-radius: 8px;
+        font-size: 1.2rem;
+        border: 2px solid rgba(0,0,0,0.5);
+    }
+}

@@ -1,9 +1,13 @@
 import React from "react";
 import Form from "../../components/UI/Form/Form";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { authActions } from "../../store/auth-slice";
+import { showErrorNotification } from "../../util/notifications";
 
 const LoginPage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const loginHandler: (name: string|undefined, email: string, password: string) => void = (
     name: string|undefined,
@@ -12,17 +16,22 @@ const LoginPage = () => {
   ) => {
     fetch("http://localhost:8080/auth", {
       method: "post",
+      credentials: 'include',
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ email, password }),
     })
       .then((res) => {
-        console.log(res);
-        navigate("/");
+        if(res.status === 200){
+          dispatch(authActions.login());
+          navigate("/");
+        }else {
+          showErrorNotification('Enter valid credentials!');
+        }
       })
       .catch((err) => {
-        console.log(err);
+        showErrorNotification('Something went wrong!');
       });
   };
 
