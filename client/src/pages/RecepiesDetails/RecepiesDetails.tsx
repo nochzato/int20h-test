@@ -7,7 +7,7 @@ import Backdrop from "../../components/Backdrop/Backdrop";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import { userProducts } from "../../store/products-slice";
-import { showWarningNotification } from "../../util/notifications";
+import { showSuccessNotification, showWarningNotification } from "../../util/notifications";
 import { log } from "console";
 
 const RecepiesDetails = () => {
@@ -85,6 +85,7 @@ const RecepiesDetails = () => {
     })
     .then(list => {
       console.log(list);
+      showSuccessNotification('Added to list successfully!');
     })
     .catch(err => {
       console.log(err);

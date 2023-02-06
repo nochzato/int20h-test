@@ -1,0 +1,36 @@
+.user_lists_container{
+    width: 70vw;
+    margin: 2rem;
+    background: lightgray;
+    border-radius: 12px;
+}
+
+.lists_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 2rem 0;
+    padding: 0;
+    
+}
+
+.lists_item {
+    font-size: 1.5rem;
+    
+    margin-bottom: 2rem;
+}
+
+.lists_title {
+    font-size: 2rem;
+}
+
+.recipe_container {
+    background: white;
+    border-radius: 12px;
+    margin-top: 1rem;
+}
+
+.recipe_item {
+
+}
