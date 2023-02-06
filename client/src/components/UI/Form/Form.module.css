@@ -3,7 +3,7 @@
     background: white;
     border-radius: 12px;
     margin: 4rem 2rem 2rem 2rem;
-    height: 60vh;
+    /* height: 60vh; */
     margin-left: 4rem;
 }
 
@@ -17,7 +17,7 @@
 
 .input {
     width: 400px;
-    height: 40px;
+    padding: 0.5rem;
     font-size: 1.2rem;
     border-radius: 12px;
     border: 1px solid gray;
@@ -37,6 +37,7 @@
     border: 1px solid gray;
     border-radius: 12px;
     font-size: 1.2rem;
+    margin-bottom: 2rem;
 }
 
 .form button:hover {
