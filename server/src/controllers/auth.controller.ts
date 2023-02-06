@@ -23,3 +23,11 @@ export const AuthenticateUser = (req: Request, res: Response) => {
     }
   });
 };
+
+export const checkAuthentication = (req: Request, res: Response) => {
+  if (req.body.user) {
+    res.send({ isLoggedIn: true });
+  } else {
+    res.send({ isLoggedIn: false });
+  }
+};
