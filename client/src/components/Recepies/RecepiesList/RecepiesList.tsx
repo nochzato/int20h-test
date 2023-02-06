@@ -13,6 +13,7 @@ const RecepiesList: React.FC<RecepiesListProps> = (props) => {
       {props.recepies.map((recepie) => {
         return (
           <RecepiesItem
+            missingIngredients={recepie.missingIngredients}
             key={recepie.idMeal}
             idMeal={recepie.idMeal}
             strMeal={recepie.strMeal}

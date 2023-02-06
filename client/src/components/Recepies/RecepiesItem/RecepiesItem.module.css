@@ -9,6 +9,22 @@
     cursor: pointer;
 }
 
+.ready {
+    border: rgb(86, 247, 86) 2px solid;
+    border-radius: 12px;
+}
+
+.not_ready {
+    border: rgb(249, 104, 104) 2px solid ;
+    border-radius: 12px;
+}
+
+.item_container a {
+    width: 200px;
+    height: 200px;
+    border-radius: 8px 8px 0 0;
+}
+
 .item_container img {
     width: 200px;
     height: 200px;
@@ -40,6 +56,12 @@
     }
 
     .item_container img {
+        width: 150px;
+        height: 150px;
+        border-radius: 8px 8px 0 0;
+    }
+
+    .item_container a {
         width: 150px;
         height: 150px;
         border-radius: 8px 8px 0 0;
