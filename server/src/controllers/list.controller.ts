@@ -28,3 +28,8 @@ export const createOrUpdateList = async (req: Request, res: Response) => {
     });
   }
 };
+
+export const getLists = async (req: Request, res: Response) => {
+  const lists = await List.find({ uid: req.body.user._id });
+  res.send(lists);
+};
