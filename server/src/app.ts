@@ -11,10 +11,15 @@ import authRouter from './routes/auth.router';
 import listRouter from './routes/list.router';
 
 const app: Application = express();
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true,
+  optionSuccessStatus: 200,
+};
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(ingredientsRouter);
 app.use(recipesRouter);
