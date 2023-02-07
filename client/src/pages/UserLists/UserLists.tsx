@@ -10,7 +10,7 @@ const UserLists = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch("http://localhost:8080/lists", { credentials: "include" })
+    fetch("http://13.39.107.58:8080/lists", { credentials: "include" })
       .then((res) => {
         if(res.status === 401){
           navigate('/login');

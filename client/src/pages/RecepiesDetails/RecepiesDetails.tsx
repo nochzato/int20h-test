@@ -33,7 +33,7 @@ const RecepiesDetails = () => {
   }
 
   useEffect(() => {
-    const url = "http://localhost:8080/recipes/";
+    const url = "http://13.39.107.58:8080/recipes/";
 
     setIsLoading(true);
 
@@ -68,7 +68,7 @@ const RecepiesDetails = () => {
 
   const addToListHandler = (title: string) => {
     console.log(typeof idMeal);
-    const url = "http://localhost:8080/lists";
+    const url = "http://13.39.107.58:8080/lists";
     fetch(url, {
       credentials: 'include',
       method: 'POST',

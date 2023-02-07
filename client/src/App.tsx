@@ -19,7 +19,7 @@ function App() {
 
 
   useEffect(() => {
-    fetch('http://localhost:8080/check-auth', {credentials: 'include'})
+    fetch('http://13.39.107.58:8080/check-auth', {credentials: 'include'})
     .then(res => {
       return res.json();
     })

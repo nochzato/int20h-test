@@ -10,7 +10,7 @@ const RegistrationPage = () => {
     email: string,
     password: string
   ) => void = (name: string | undefined, email: string, password: string) => {
-    fetch("http://localhost:8080/register", {
+    fetch("http://13.39.107.58:8080/register", {
       method: "post",
       headers: {
         "Content-Type": "application/json",

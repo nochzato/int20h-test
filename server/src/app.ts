@@ -12,7 +12,7 @@ import listRouter from './routes/list.router';
 
 const app: Application = express();
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: 'http://13.39.107.58:3000/',
   credentials: true,
   optionSuccessStatus: 200,
 };

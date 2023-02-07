@@ -14,7 +14,7 @@ const LoginPage = () => {
     email: string,
     password: string
   ) => {
-    fetch("http://localhost:8080/auth", {
+    fetch("http://13.39.107.58:8080/auth", {
       method: "post",
       credentials: 'include',
       headers: {
