@@ -5,7 +5,7 @@ import { IUser } from '../common/types';
 import { User } from '../models/user.model';
 import generateAcessToken from '../utils/generateAccessToken';
 
-export const AuthenticateUser = (req: Request, res: Response) => {
+export const authenticateUser = (req: Request, res: Response) => {
   const user: IUser = req.body;
   User.findOne({ email: user.email }, (_: MongooseError, foundUser: IUser) => {
     if (foundUser) {
@@ -30,4 +30,9 @@ export const checkAuthentication = (req: Request, res: Response) => {
   } else {
     res.send({ isLoggedIn: false });
   }
+};
+
+export const logout = (_: Request, res: Response) => {
+  res.clearCookie('auth-token');
+  res.end();
 };
