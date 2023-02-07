@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import classes from "./ListsModal.module.css";
 import {ColorRing} from 'react-loader-spinner';
 import { showWarningNotification } from "../../util/notifications";
+import { useNavigate } from "react-router-dom";
 
 interface ListModalProps {
   onCloseModal: () => void;
@@ -12,11 +13,18 @@ const ListsModal: React.FC<ListModalProps> = (props) => {
   const [isCreatingNew, setIsCreatingNew] = useState<boolean>(false);
   const [lists, setLists] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsLoading(true);
     fetch("http://localhost:8080/lists", { credentials: "include" })
       .then((res) => {
+        if(res.status === 401){
+          document.body.style.overflow = '';
+          navigate('/login');
+          return;
+        }
+
         return res.json();
       })
       .then((lists) => {

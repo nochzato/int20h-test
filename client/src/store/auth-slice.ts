@@ -28,7 +28,8 @@ export default authSlice;
 export const logoutRequest = () => {
     return async (dispatch: any) => {
         try{
-            fetch('kjfkj')
+            await fetch('http://localhost:8080/logout', {credentials: 'include'});
+            dispatch(authActions.logout());
 
         }catch(err){
             if(err instanceof Error){
