@@ -3,9 +3,14 @@ export interface Ingredients {
   ingredients: Array<string>;
 }
 
+export interface RecipeIdAndTitle {
+  id: string;
+  title: string;
+}
+
 export interface IList {
   title: string;
-  recipes: Array<string>;
+  recipes: Array<RecipeIdAndTitle>;
   uid: mongoose.Schema.Types.ObjectId;
 }
 
