@@ -10,6 +10,7 @@ html {
 
 body {
   margin: 0;
+  overflow-x: hidden;
   background: #f2994a; /* fallback for old browsers */
   background: linear-gradient(
     to right,
