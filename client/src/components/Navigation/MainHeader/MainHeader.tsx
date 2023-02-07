@@ -1,10 +1,13 @@
+import { AnyAction } from "@reduxjs/toolkit";
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { RootState } from "../../../store";
+import { logoutRequest } from "../../../store/auth-slice";
 import classes from "./MainHeader.module.css";
 
 const MainHeader = () => {
+  const dispatch = useDispatch();
   const isLogin = useSelector<RootState, boolean>(
     (state) => state.auth.isLogin
   );
@@ -21,11 +24,19 @@ const MainHeader = () => {
             <Link to="/login">Sign in</Link>
           </>
         )}
-        {isLogin && <>
-          <Link to="/profile">My lists</Link>
-          <Link to="/">Logout</Link>
+        {isLogin && (
+          <>
+            <Link to="/profile">My lists</Link>
+            <Link
+              to="/"
+              onClick={() => {
+                dispatch(logoutRequest() as unknown as AnyAction);
+              }}
+            >
+              Logout
+            </Link>
           </>
-        }
+        )}
       </div>
     </header>
   );
