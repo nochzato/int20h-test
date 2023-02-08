@@ -10,5 +10,5 @@ to launch the project:
 7. npm run dev
 P.S.: won't work since no .env file :)
 
-link: http://13.39.107.58:3000/ (awc ec2)
+link: http://35.181.51.198:3000/ (awc ec2)
 used api: https://www.themealdb.com/api.php
