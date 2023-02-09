@@ -12,7 +12,7 @@ import listRouter from './routes/list.router';
 
 const app: Application = express();
 const corsOptions = {
-  origin: 'http://13.39.107.58:3000/',
+  origin: 'http://35.181.51.198:3000',
   credentials: true,
   optionSuccessStatus: 200,
 };

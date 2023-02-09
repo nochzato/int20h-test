@@ -36,7 +36,7 @@ const RecepiesPage = () => {
       return;
     }
 
-    const url = "http://13.39.107.58:8080/recipes";
+    const url = "http://35.181.51.198:8080/recipes";
 
     setIsLoading(true);
 

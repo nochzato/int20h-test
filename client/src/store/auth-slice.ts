@@ -28,7 +28,7 @@ export default authSlice;
 export const logoutRequest = () => {
     return async (dispatch: any) => {
         try{
-            await fetch('http://13.39.107.58:8080/logout', {credentials: 'include'});
+            await fetch('http://35.181.51.198:8080/logout', {credentials: 'include'});
             dispatch(authActions.logout());
 
         }catch(err){

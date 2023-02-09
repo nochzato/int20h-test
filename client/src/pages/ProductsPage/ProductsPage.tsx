@@ -9,7 +9,7 @@ const ProductsPage = () => {
   const [products, setProducts] = useState<string[]>([]);
 
   const searchProductsHandler = useCallback(async (query: string) => {
-    const url = "http://13.39.107.58:8080/ingredients";
+    const url = "http://35.181.51.198:8080/ingredients";
     setIsLoading(true);
 
     if (!query) {
